@@ -1,0 +1,926 @@
+<!-- 
+========================================================
+FILE: index.html
+SECTION: Header & Navigation
+========================================================
+
+This file contains ONLY the Header/Navbar section for now.
+
+We are keeping the structure clean and modular so that
+future sections can be added easily.
+
+Recommended folder structure:
+
+project-folder/
+│
+├── index.html
+├── style.css
+├── script.js
+│
+└── assets/
+    └── images/ 
+        └── logo.png
+
+========================================================
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic meta settings -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Website title shown in browser tab -->
+    <title>IFL Factory Ltd.</title>
+
+    <!-- Linking external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Font (optional but professional looking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- 
+    ========================================================
+    HEADER SECTION START
+    ========================================================
+
+    The <header> element contains:
+    1. Logo
+    2. Navigation menu
+
+    We use a wrapper/container to keep content aligned.
+    ========================================================
+    -->
+
+    <header class="header">
+      <!-- 
+        Main container keeps content centered and prevents
+        the navbar from stretching too wide on large screens.
+        -->
+      <div class="container navbar">
+        <!-- 
+            ====================================================
+            LOGO AREA
+            ====================================================
+
+            The logo is clickable and redirects to homepage.
+            You can replace the text with an image later.
+
+            Example:
+            <img src="assets/images/logo.png" alt="IFL Logo">
+            ====================================================
+            -->
+        <a href="#" class="logo">
+          <img src="Assets/IFL (1).png" alt="" />
+        </a>
+
+        <!-- 
+            ====================================================
+            NAVIGATION MENU
+            ====================================================
+
+            Each navigation item is wrapped inside <li>.
+            The underline animation will be created in CSS
+            using ::after pseudo-element.
+            ====================================================
+            -->
+        <nav>
+          <!-- 
+========================================================
+UPDATED NAVIGATION LINKS
+========================================================
+
+Each href now points to a section ID.
+
+Example:
+href="#about"
+
+→ Scrolls to section with:
+id="about"
+
+========================================================
+-->
+
+          <!-- The Hamburger Button -->
+  <button class="hamburger" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+          <ul class="nav-links">
+            <li>
+              <a href="#home">HOME</a>
+            </li>
+
+            <li>
+              <a href="#about">ABOUT US</a>
+            </li>
+
+            <li>
+              <a href="#gallery">GALLERY</a>
+            </li>
+
+            <li>
+              <a href="#clients">OUR CLIENTS</a>
+            </li>
+
+            <li>
+              <a href="#contact">CONTACT US</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 
+    ========================================================
+    HEADER SECTION END
+    ========================================================
+    -->
+    <!-- 
+========================================================
+SECTION 2: HERO SECTION
+========================================================
+
+This section contains:
+1. Full-screen hero banner
+2. Automatic slideshow
+3. Dark overlay for readability
+4. Text content on top of images
+
+IMPORTANT:
+Place this code DIRECTLY BELOW the closing </header>
+tag from the previous section.
+
+========================================================
+-->
+
+    <section class="hero" id="home">
+      <!-- 
+    ====================================================
+    SLIDESHOW CONTAINER
+    ====================================================
+
+    This wrapper holds all slideshow images.
+
+    Each image is a separate "slide".
+    Only one slide will be active at a time.
+    ====================================================
+    -->
+      <div class="slider">
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <!-- 
+            Replace image path with your own image later.
+            Recommended image size:
+            1920x1080
+            -->
+          <img src="Assets/hero/1.jpg" alt="Garments Factory" />
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="Assets/hero/2.jpg" alt="Textile Production" />
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="Assets/hero/5.jpg" alt="Professional Team" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="Assets/hero/6.jpg" alt="Professional Team" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="Assets/hero/7.jpg" alt="Professional Team" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="Assets/hero/8.webp" alt="Professional Team" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="Assets/hero/3.avif" alt="Professional Team" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="Assets/hero/4.avif" alt="Professional Team" />
+        </div>
+      </div>
+
+      <!-- 
+    ====================================================
+    DARK OVERLAY
+    ====================================================
+
+    This semi-transparent layer sits on top of images.
+
+    Purpose:
+    Makes text easier to read.
+    ====================================================
+    -->
+      <div class="hero-overlay"></div>
+
+      <!-- 
+    ====================================================
+    HERO CONTENT
+    ====================================================
+
+    Text displayed above slideshow images.
+    ====================================================
+    -->
+      <div class="hero-content">
+        <h1>Leading Ready Made Garments Manufacturer</h1>
+
+        <p>
+          Delivering Quality, Innovation, and Excellence in the Global Apparel
+          Industry.
+        </p>
+
+        <!-- Optional button -->
+        
+      </div>
+    </section>
+
+    <!-- 
+========================================================
+SECTION 3: ABOUT US SECTION
+========================================================
+
+This section contains:
+1. Factory introduction
+2. Company description
+3. Animated statistics (Count-Up Effect)
+
+IMPORTANT:
+Place this section directly BELOW the Hero Section.
+
+========================================================
+-->
+
+    <section class="about" id="about">
+      <!-- Video Element & Overlay Added Inside the Section Background -->
+      <video autoplay loop muted playsinline class="about-bg-video">
+        <source src="Assets/video.mp4" type="video/mp4" />
+      </video>
+      <div class="about-video-overlay"></div>
+
+      <!-- Main content container -->
+      <div class="container">
+        <!-- 
+        ====================================================
+        SECTION HEADER (Full Screen Top Block)
+        ====================================================
+        -->
+        <div class="glass-panel">
+          <div class="section-title">
+            <h2>About IFL</h2>
+            <p>
+              A trusted Ready Made Garments manufacturer committed to quality,
+              sustainability, and global excellence.
+            </p>
+          </div>
+
+          <!-- 
+        ====================================================
+        ABOUT CONTENT WRAPPER (Now stacked vertically)
+        ====================================================
+        -->
+          <div class="about-wrapper">
+            <!-- LEFT SIDE CONTENT (Now full width on top) -->
+            <div class="about-text">
+              <h3>Delivering World Class Apparel Manufacturing Solutions</h3>
+              <p>
+                IFL is a professional Ready Made Garments manufacturing company
+                dedicated to producing high quality apparel for international
+                markets. Our factory combines skilled craftsmanship, advanced
+                production facilities, and ethical manufacturing standards to
+                ensure excellence in every product.
+              </p>
+              <p>
+                With years of industry experience, IFL has built strong
+                relationships with global clients by maintaining superior
+                quality control, on-time delivery, and sustainable business
+                practices.
+              </p>
+            </div>
+          </div>
+          <!-- End of about-wrapper -->
+        </div>
+      </div>
+      <!-- End of container -->
+    </section>
+
+    <!-- 
+====================================================
+RIGHT SIDE STATISTICS (Moved out & below the full screen video block)
+====================================================
+-->
+    <section class="stats-bubble-section">
+      <!-- Section Background Image -->
+      <div
+        class="stats-bg-image"
+        style="background-image: url(&quot;Assets/hero/3.avif&quot;)"
+      ></div>
+      <div class="stats-bg-overlay"></div>
+
+      <div class="container">
+        <div class="stats-grid">
+          <!-- BUBBLE CARD 1 -->
+          <div class="bubble-card stair-1">
+            <div class="bubble-content">
+              <h3 class="counter" data-target="15">0</h3>
+              <p>Years Experience</p>
+            </div>
+          </div>
+
+          <!-- BUBBLE CARD 2 -->
+          <div class="bubble-card stair-2">
+            <div class="bubble-content">
+              <h3 class="counter" data-target="1500">0</h3>
+              <p>Employees</p>
+            </div>
+          </div>
+
+          <!-- BUBBLE CARD 3 -->
+          <div class="bubble-card stair-3">
+            <div class="bubble-content">
+              <h3 class="counter" data-target="150">0</h3>
+              <p>Global Clients</p>
+            </div>
+          </div>
+
+          <!-- BUBBLE CARD 4 -->
+          <div class="bubble-card stair-4">
+            <div class="bubble-content">
+              <h3 class="counter" data-target="90">0</h3>
+              <p>Export Countries</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+========================================================
+SECTION 4: CERTIFICATION SECTION
+========================================================
+
+This section displays:
+1. Certification logos
+2. Hover zoom animation
+3. Responsive grid layout
+
+Purpose:
+Show factory credibility and compliance standards.
+
+IMPORTANT:
+Place this section directly BELOW the About Section.
+
+========================================================
+-->
+
+    <section class="certifications">
+      <!-- VIDEO BACKGROUND ELEMENT FRAMEWORK -->
+      <video autoplay loop muted playsinline class="cert-bg-video">
+        <source src="Assets/certifications/your-video.mp4" type="video/mp4" />
+      </video>
+      <div class="cert-video-overlay"></div>
+
+      <div class="container">
+        <!-- 
+        ====================================================
+        SECTION TITLE
+        ====================================================
+        -->
+        <div class="section-title">
+          <h2>Our Certifications</h2>
+
+          <p>
+            We maintain international standards of quality, safety,
+            sustainability, and ethical manufacturing.
+          </p>
+        </div>
+
+        <!-- 
+        ====================================================
+        CERTIFICATION GRID
+        ====================================================
+
+        Each card contains:
+        1. Certification logo/image
+        2. Certification name
+
+        Replace placeholder images with real certification logos later.
+        ====================================================
+        -->
+        <div class="certification-grid">
+          <!-- CERTIFICATION CARD 1 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/BSCI.jpg"
+              alt="BSCI Certification"
+            />
+
+            <h3>BSCI Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 2 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/environment-clearance-service.jpg"
+              alt="Environment Clearance Certification"
+            />
+
+            <h3>Environment Clearance Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 3 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/fire-safety-license.jpg"
+              alt="Fire Safety Certification"
+            />
+
+            <h3>Fire Safety Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 4 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/Global_Organic_Textile_Standard_logo.svg"
+              alt="GOTS Certification"
+            />
+
+            <h3>GOTS Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 5 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/ISO_9001-2015.svg"
+              alt="ISO_9001-2015 Certification"
+            />
+
+            <h3>ISO_9001-2015 Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 6 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/Logo-BGMEA-CMYK.png"
+              alt="BGMEA Certification"
+            />
+
+            <h3>BGMEA Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 7 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/sa-8000-certification-services.png"
+              alt="SA8000 Certification"
+            />
+
+            <h3>SA8000 Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 8 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/wrap.png"
+              alt="WRAP Certification"
+            />
+
+            <h3>WRAP Certification</h3>
+          </div>
+
+          <!-- CERTIFICATION CARD 9 -->
+          <div class="cert-card">
+            <img
+              src="Assets/certifications/zdhc-logo.jpg"
+              alt="ZDHC Certification"
+            />
+
+            <h3>ZDHC Certification</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Temporary Gallery Section -->
+    <section id="gallery">
+      <!-- Dark overlay to ensure website text/navigation stays visible over images -->
+      <div class="gallery-overlay"></div>
+
+      <div class="gallery-wall">
+        <!-- COLUMN 1 -->
+        <div class="gallery-column scroll-up">
+          <!-- Original Set -->
+          <img src="Assets/gallery/img1.jpg" alt="Garment Production 1" />
+          <img src="Assets/gallery/img2.webp" alt="Garment Production 2" />
+          <img src="Assets/gallery/img3.jpeg" alt="Garment Production 3" />
+          <!-- Duplicate Set (For seamless infinite loop) -->
+          <img src="Assets/gallery/img4.jpg" alt="Garment Production 1" />
+          <img src="Assets/gallery/img5.jpg" alt="Garment Production 2" />
+          <img src="Assets/gallery/img6.jpg" alt="Garment Production 3" />
+        </div>
+
+        <!-- COLUMN 2 -->
+        <div class="gallery-column scroll-down">
+          <!-- Original Set -->
+          <img src="Assets/gallery/img4.jpg" alt="Garment Production 4" />
+          <img src="Assets/gallery/img5.jpg" alt="Garment Production 5" />
+          <img src="Assets/gallery/img6.jpg" alt="Garment Production 6" />
+          <!-- Duplicate Set (For seamless infinite loop) -->
+          <img src="Assets/gallery/img4.jpg" alt="Garment Production 4" />
+          <img src="Assets/gallery/img5.jpg" alt="Garment Production 5" />
+          <img src="Assets/gallery/img6.jpg" alt="Garment Production 6" />
+        </div>
+
+        <!-- COLUMN 3 -->
+        <div class="gallery-column scroll-up">
+          <!-- Original Set -->
+          <img src="Assets/gallery/img7.jpg" alt="Garment Production 7" />
+          <img src="Assets/gallery/img8.jpg" alt="Garment Production 8" />
+          <img src="Assets/gallery/img9.jpg" alt="Garment Production 9" />
+          <!-- Duplicate Set (For seamless infinite loop) -->
+          <img src="Assets/gallery/img7.jpg" alt="Garment Production 7" />
+          <img src="Assets/gallery/img8.jpg" alt="Garment Production 8" />
+          <img src="Assets/gallery/img9.jpg" alt="Garment Production 9" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Temporary Career Section -->
+    <!--
+========================================================
+CLIENTS SECTION
+========================================================
+
+Displays international buyers/clients.
+
+Features:
+1. Background image
+2. Dark overlay
+3. Infinite logo scrolling
+4. Fully responsive
+
+Replace the placeholder logos with actual client logos.
+
+========================================================
+-->
+
+<section id="clients" class="clients">
+
+    <!-- Dark overlay -->
+    <div class="clients-overlay"></div>
+
+    <div class="container">
+
+        <!-- Section Title -->
+        <div class="section-title clients-title">
+
+            <h2>Our Global Clients</h2>
+
+            <p>
+                Trusted by leading fashion brands and
+                international apparel companies worldwide.
+            </p>
+
+        </div>
+
+
+        <!--
+        ====================================================
+        LOGO TRACK
+        ====================================================
+
+        Duplicate logos once for seamless infinite scrolling.
+        ====================================================
+        -->
+        <div class="logo-slider">
+
+            <div class="logo-track">
+
+                <!-- Original Logos -->
+
+                <img src="assets/clients/client1.svg" alt="Client">
+                <img src="assets/clients/client2.svg" alt="Client">
+                <img src="assets/clients/client3.png" alt="Client">
+                <img src="assets/clients/client4.png" alt="Client">
+                <img src="assets/clients/client5.png" alt="Client">
+                <img src="assets/clients/client6.png" alt="Client">
+                <img src="assets/clients/client7.png" alt="Client">
+                <img src="assets/clients/client8.png" alt="Client">
+                <img src="assets/clients/client9.jpg" alt="Client">
+                <img src="assets/clients/cl" alt="Client">
+                <img src="assets/clients/client11.png" alt="Client">
+                <img src="assets/clients/client12.png" alt="Client">
+                <img src="assets/clients/client13.png" alt="Client">
+                <img src="assets/clients/client14.png" alt="Client">
+                <img src="assets/clients/client15.png" alt="Client">
+                <img src="assets/clients/client16.png" alt="Client">
+                <img src="assets/clients/client17.png" alt="Client">
+
+
+
+                <!-- Duplicate Logos -->
+
+                <img src="assets/clients/client1.svg" alt="Client">
+                <img src="assets/clients/client2.svg" alt="Client">
+                <img src="assets/clients/client3.png" alt="Client">
+                <img src="assets/clients/client4.png" alt="Client">
+                <img src="assets/clients/client5.png" alt="Client">
+                <img src="assets/clients/client6.png" alt="Client">
+                <img src="assets/clients/client7.png" alt="Client">
+                <img src="assets/clients/client8.png" alt="Client">
+                <img src="assets/clients/client9.jpg" alt="Client">
+                <img src="assets/clients/cl" alt="Client">
+                <img src="assets/clients/client11.png" alt="Client">
+                <img src="assets/clients/client12.png" alt="Client">
+                <img src="assets/clients/client13.png" alt="Client">
+                <img src="assets/clients/client14.png" alt="Client">
+                <img src="assets/clients/client15.png" alt="Client">
+                <img src="assets/clients/client16.png" alt="Client">
+                <img src="assets/clients/client17.png" alt="Client">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- 
+========================================================
+SECTION 5: CONTACT US SECTION
+========================================================
+
+This section contains:
+1. Contact Information
+2. Contact Form
+3. Embedded Google Map
+
+IMPORTANT:
+Place this section directly BELOW the
+Certification Section.
+
+========================================================
+-->
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <!-- 
+        ====================================================
+        SECTION TITLE
+        ====================================================
+        -->
+        <div class="section-title">
+          <h2>Contact Us</h2>
+
+          <p>
+            Get in touch with IFL for business inquiries, partnerships, or
+            manufacturing solutions.
+          </p>
+        </div>
+
+        <!-- 
+        ====================================================
+        CONTACT CONTENT WRAPPER
+        ====================================================
+
+        Left Side:
+        → Contact information
+
+        Right Side:
+        → Contact form
+        ====================================================
+        -->
+        <div class="contact-wrapper">
+          <!-- 
+            ====================================================
+            CONTACT INFORMATION
+            ====================================================
+            -->
+          <div class="contact-info">
+            <!-- Contact Item -->
+            <div class="contact-item">
+              <h3>Factory Address</h3>
+
+              <p>
+                Salna, Gazipur,<br />
+                Dhaka, Bangladesh
+              </p>
+            </div>
+
+            <!-- Contact Item -->
+            <div class="contact-item">
+              <h3>Email Address</h3>
+
+              <p>info@iflgarments.com</p>
+            </div>
+
+            <!-- Contact Item -->
+            <div class="contact-item">
+              <h3>Phone Number</h3>
+
+              <p>+880 1234 567890</p>
+            </div>
+
+            <!-- Contact Item -->
+            <div class="contact-item">
+              <h3>Working Hours</h3>
+
+              <p>
+                Saturday - Thursday<br />
+                8:00 AM - 5:00 PM
+              </p>
+            </div>
+          </div>
+
+          <!-- 
+            ====================================================
+            CONTACT FORM
+            ====================================================
+
+            This is currently frontend only.
+
+            Later you can connect it with:
+            - PHP
+            - Node.js
+            - Firebase
+            - Formspree
+            - EmailJS
+            ====================================================
+            -->
+          <div class="contact-form-container">
+            <form class="contact-form">
+              <!-- Name Input -->
+              <input type="text" placeholder="Your Name" required />
+
+              <!-- Email Input -->
+              <input type="email" placeholder="Your Email" required />
+
+              <!-- Subject Input -->
+              <input type="text" placeholder="Subject" required />
+
+              <!-- Message Input -->
+              <textarea placeholder="Your Message" rows="6" required></textarea>
+
+              <!-- Submit Button -->
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- 
+        ====================================================
+        GOOGLE MAP
+        ====================================================
+
+        Replace the iframe src later with your
+        actual factory location map embed code.
+
+        How to get:
+        Google Maps → Share → Embed a map
+        ====================================================
+        -->
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4833.870485024616!2d90.37248613345527!3d24.030252537605758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755db874a2ee787%3A0xc7d7fe364bce6d56!2sIFL%20Factory%20Ltd.Salna.!5e1!3m2!1sen!2sbd!4v1780672499998!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- 
+========================================================
+SECTION 6: FOOTER & GLOBAL FEATURES
+========================================================
+
+This final section contains:
+1. Footer
+2. Footer navigation links
+3. Social media placeholders
+4. Copyright section
+5. Scroll-to-top floating button
+
+IMPORTANT:
+Place this section BELOW the Contact Section.
+
+========================================================
+-->
+
+    <footer class="footer">
+      <!-- 
+    ====================================================
+    MAIN FOOTER CONTENT
+    ====================================================
+    -->
+      <div class="container">
+        <!-- 
+        ====================================================
+        FOOTER TOP AREA
+        ====================================================
+        -->
+        <div class="footer-top">
+          <!-- 
+            ====================================================
+            FOOTER BRANDING
+            ====================================================
+            -->
+          <div class="footer-brand">
+            <h2>IFL</h2>
+
+            <p>
+              Professional Ready Made Garments manufacturer committed to
+              quality, sustainability, and global excellence.
+            </p>
+          </div>
+
+          <!-- 
+            ====================================================
+            FOOTER QUICK LINKS
+            ====================================================
+            -->
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+
+            <ul>
+               <li>
+              <a href="#home">HOME</a>
+            </li>
+
+            <li>
+              <a href="#about">ABOUT US</a>
+            </li>
+
+            <li>
+              <a href="#gallery">GALLERY</a>
+            </li>
+
+            <li>
+              <a href="#clients">OUR CLIENTS</a>
+            </li>
+
+            <li>
+              <a href="#contact">CONTACT US</a>
+            </li>
+            </ul>
+          </div>
+
+          <!-- 
+            ====================================================
+            FOOTER CONTACT INFO
+            ====================================================
+            -->
+          <div class="footer-contact">
+            <h3>Contact Info</h3>
+
+            <p>Salna, Gazipur, Bangladesh</p>
+
+            <p>info@iflgarments.com</p>
+
+            <p>+880 1234 567890</p>
+          </div>
+        </div>
+
+        <!-- 
+        ====================================================
+        FOOTER BOTTOM AREA
+        ====================================================
+        -->
+        <div class="footer-bottom">
+          <p>© 2026 IFL Garments. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 
+========================================================
+SCROLL TO TOP BUTTON
+========================================================
+
+This floating button appears when user scrolls down.
+
+When clicked:
+→ Smoothly scrolls page back to top.
+========================================================
+-->
+
+    <button id="scrollTopBtn">↑</button>
+
+    <!-- Linking external JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>

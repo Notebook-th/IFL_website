@@ -1,0 +1,1975 @@
+/* 
+========================================================
+FILE: style.css
+SECTION: Header & Navigation Styling
+========================================================
+*/
+
+/* 
+========================================================
+GLOBAL RESET
+========================================================
+
+This removes default browser spacing and ensures
+consistent layout behavior across browsers.
+========================================================
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+========================================================
+SMOOTH SCROLLING
+========================================================
+
+Makes navigation scrolling animated instead of instant.
+========================================================
+*/
+
+html {
+  scroll-behavior: smooth;
+}
+/* 
+========================================================
+BODY STYLING
+========================================================
+*/
+
+body {
+  /* Professional clean font */
+  font-family: "Poppins", sans-serif;
+
+  /* Light background */
+  background-color: #ffffff;
+}
+
+/* 
+========================================================
+REUSABLE CONTAINER
+========================================================
+
+Keeps content aligned and centered.
+max-width prevents ultra-wide stretching.
+========================================================
+*/
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* 
+========================================================
+HEADER STYLING
+========================================================
+
+position: fixed
+→ Navbar stays visible while scrolling.
+
+z-index
+→ Ensures navbar stays above all other sections.
+========================================================
+*/
+
+.header {
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: #ffffff;
+
+  z-index: 1000;
+
+  /* Subtle shadow for modern professional look */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 
+========================================================
+NAVBAR LAYOUT
+========================================================
+
+display: flex
+→ Places logo and menu side-by-side.
+
+justify-content: space-between
+→ Pushes logo left and menu right.
+
+align-items: center
+→ Vertical alignment.
+========================================================
+*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  position: relative;
+}
+
+/* 
+========================================================
+LOGO STYLING
+========================================================
+*/
+.logo {
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center; 
+}
+
+.logo img {
+  width: 250px;
+  height: 50px;
+  object-fit: contain; 
+}
+
+/* 
+========================================================
+NAVIGATION MENU
+========================================================
+*/
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+/* 
+========================================================
+NAVIGATION LINKS
+========================================================
+*/
+.nav-links li a {
+  position: relative;
+  text-decoration: none;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* 
+========================================================
+UNDERLINE HOVER EFFECT
+========================================================
+*/
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 3.5px;
+  background-color: #f6ff00;
+  transition: width 0.5s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.nav-links li a:hover {
+  color: #444444;
+}
+
+/* 
+========================================================
+HAMBURGER ICON (HIDDEN ON DESKTOP)
+========================================================
+*/
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: #111111;
+  transition: all 0.3s ease;
+}
+
+/* 
+========================================================
+DEVICE RESPONSIVENESS (MOBILE BREAKPOINT)
+========================================================
+*/
+@media screen and (max-width: 768px) {
+  /* Reveal the hamburger button */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Make logo fluid on mobile */
+  .logo img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+  }
+
+  /* Turn nav-links into a hidden mobile dropdown menu */
+  .nav-links {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 0;
+    gap: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+  }
+
+  /* JavaScript toggles this class to show the menu */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li a::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Optional: Morph hamburger into an 'X' when active */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* 
+========================================================
+SECTION 2: HERO SECTION
+========================================================
+*/
+
+/* 
+========================================================
+HERO MAIN CONTAINER
+========================================================
+
+height: 100vh
+→ Makes hero section take full screen height.
+
+position: relative
+→ Needed for overlay and content positioning.
+========================================================
+*/
+
+.hero {
+  width: 100%;
+  height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* 
+========================================================
+SLIDER CONTAINER
+========================================================
+*/
+
+.slider {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+}
+
+/* 
+========================================================
+INDIVIDUAL SLIDES
+========================================================
+
+All slides are stacked on top of each other.
+
+opacity: 0
+→ Hidden by default
+
+Only active slide becomes visible.
+========================================================
+*/
+
+.slide {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+
+  transition: opacity 1.2s ease-in-out;
+}
+
+/* 
+========================================================
+ACTIVE SLIDE
+========================================================
+
+Only active slide is visible.
+========================================================
+*/
+
+.slide.active {
+  opacity: 1;
+}
+
+/* 
+========================================================
+SLIDE IMAGE
+========================================================
+
+object-fit: cover
+→ Prevents image distortion while filling screen.
+========================================================
+*/
+
+.slide img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* 
+========================================================
+DARK OVERLAY
+========================================================
+
+Creates dark transparent layer over images.
+========================================================
+*/
+
+.hero-overlay {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  z-index: 2;
+}
+
+/* 
+========================================================
+HERO CONTENT
+========================================================
+
+Centered vertically and horizontally.
+========================================================
+*/
+
+.hero-content {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  color: white;
+
+  z-index: 3;
+
+  width: 90%;
+  max-width: 900px;
+}
+
+/* 
+========================================================
+HERO TITLE
+========================================================
+*/
+
+.hero-content h1 {
+  font-size: 60px;
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  margin-bottom: 20px;
+}
+
+/* 
+========================================================
+HERO DESCRIPTION
+========================================================
+*/
+
+.hero-content p {
+  font-size: 20px;
+
+  line-height: 1.8;
+
+  margin-bottom: 35px;
+}
+
+/* 
+========================================================
+HERO BUTTON
+========================================================
+*/
+
+.hero-btn {
+  display: inline-block;
+
+  text-decoration: none;
+
+  background-color: white;
+  color: #111111;
+
+  padding: 14px 35px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  border-radius: 5px;
+
+  transition: all 0.3s ease;
+}
+
+/* --- Video Layout Controls --- */
+.about {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* Force full screen height */
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.about-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.about-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* Keeps text highly readable over video */
+  z-index: 2;
+}
+
+/* Force text content layers over video background */
+.about .container {
+  position: relative;
+  z-index: 3;
+}
+
+/* --- Text Alignments --- */
+.section-title h2, 
+.section-title p,
+.about-text h3,
+.about-text p {
+  color: #ffffff; /* Bright text for contrast */
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-text h3 {
+  font-size: 38px;
+  margin-bottom: 24px;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* --- Bottom Staircase Stats Layout --- */
+.stats-section {
+  background-color: #f9f9f9;
+  padding: 100px 0 200px 0; /* Huge bottom padding to hold the dropping stairs */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 45px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+
+/* Staircase Drop Shifts */
+.stair-1 { transform: translateY(0); }
+.stair-2 { transform: translateY(40px); }
+.stair-3 { transform: translateY(80px); }
+.stair-4 { transform: translateY(120px); }
+
+/* Responsive adjustments for mid-size/mobile layouts */
+@media (max-width: 992px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  /* Clear stair shifts on small screens so they don't break borders */
+  .stair-1, .stair-2, .stair-3, .stair-4 { transform: translateY(0); }
+  .stats-section { padding: 60px 0; }
+}
+
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-text h3 { font-size: 28px; }
+}
+
+
+/* --- Glassmorphism Box Panel --- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.07); /* Very subtle white tint */
+  backdrop-filter: blur(12px);          /* Creates the frosted glass blur */
+  -webkit-backdrop-filter: blur(12px);  /* Safari compliance */
+  
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Light glass border */
+  border-radius: 16px;                  /* Rounded corners */
+  
+  padding: 50px 40px;                   /* Inside breathing room for text */
+  max-width: 960px;                     /* Centers and restricts layout width */
+  margin: 0 auto;                       /* Absolute centering */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Soft shadow depth */
+}
+
+/* --- Text Contrast Enhancements --- */
+.section-title h2 {
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* Added specific class for the main sub-heading text contrast */
+.section-title .lead-text {
+  font-size: 18px;
+  color: #e0e0e0; 
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.about-text h3 {
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #f0f0f0; /* Soft off-white reads much better on dark filters */
+  margin-bottom: 20px;
+}
+
+/* Remove margin on the absolute final paragraph block */
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive fixes for small displays */
+@media (max-width: 768px) {
+  .glass-panel {
+    padding: 30px 20px;
+    margin: 0 15px;
+  }
+  .about-text h3 { font-size: 22px; }
+}
+
+
+
+/* 
+========================================================
+BUTTON HOVER EFFECT
+========================================================
+*/
+
+.hero-btn:hover {
+  background-color: #111111;
+  color: white;
+}
+
+/* 
+========================================================
+SECTION 3: ABOUT US SECTION
+========================================================
+*/
+
+/* 
+========================================================
+ABOUT SECTION MAIN CONTAINER
+========================================================
+*/
+
+.about {
+  padding: 120px 0;
+
+  background-color: #f8f9fa;
+}
+
+/* 
+========================================================
+SECTION TITLE
+========================================================
+*/
+section {
+  scroll-margin-top: 100px;
+}
+
+.section-title {
+  text-align: center;
+
+  margin-bottom: 70px;
+}
+
+/* Main Heading */
+.section-title h2 {
+  font-size: 42px;
+  font-weight: 700;
+
+  color: #ffffff;
+
+  margin-bottom: 20px;
+}
+
+/* Description Text */
+.section-title p {
+  max-width: 700px;
+
+  margin: auto;
+  
+  font-size: 17px;
+
+  line-height: 1.8;
+
+  color: #fdff84;
+}
+
+/* 
+========================================================
+ABOUT WRAPPER
+========================================================
+
+display: grid
+→ Creates two-column layout
+
+Left = text
+Right = statistics
+========================================================
+*/
+
+.about-wrapper {
+  display: grid;
+
+  
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+/* 
+========================================================
+ABOUT TEXT CONTENT
+========================================================
+*/
+
+.about-text h3 {
+  font-size: 34px;
+
+  line-height: 1.4;
+
+  margin-bottom: 25px;
+
+  color: #ffffff;
+}
+
+/* Paragraph Styling */
+.about-text p {
+  font-size: 16px;
+
+  line-height: 1.9;
+  text-align: justify;
+  color: #ffffff;
+
+  margin-bottom: 20px;
+}
+
+/* 
+/* --- Background & Section Setup --- */
+.stats-bubble-section {
+  position: relative;
+  width: 100vw;                 /* Forces the section to match the full viewport width */
+  min-height: 100vh;            /* Forces the section to match the full viewport height */
+  padding: 100px 0 200px 0;
+  display: flex;
+  align-items: center;          /* Centers your elements vertically if needed */
+  overflow: hidden;
+}
+
+.stats-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* These two lines fix the issue by forcing the image to fill the container without distortion */
+  background-size: cover;       
+  background-position: center;  
+  
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+
+
+.stats-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Darkens your image slightly to pop the bubbles */
+  z-index: -1;
+}
+
+/* --- Grid Wrapper --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Glass Bubble Logic --- */
+.bubble-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Maintains perfect circle structure */
+  background: rgba(255, 255, 255, 0.08); /* Transparent base tint */
+  
+  /* Frosted glass blur effect */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  border-radius: 50%; /* Converts box shapes into bubbles */
+  
+  /* Inner and outer bubble reflections */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2), 
+    inset 0 4px 15px rgba(255, 255, 255, 0.2), 
+    inset 0 -4px 15px rgba(0, 0, 0, 0.2);
+    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Float interaction */
+.bubble-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.bubble-content {
+  text-align: center;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.bubble-content h3 {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bubble-content p {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #e5e5e5;
+}
+
+/* --- Staircase Layout Drops --- */
+.stair-1 { transform: translateY(0); }
+.stair-2 { transform: translateY(0px); }
+.stair-3 { transform: translateY(0px); }
+.stair-4 { transform: translateY(0px); }
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 992px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .stair-1, .stair-2, .stair-3, .stair-4 { transform: translateY(0); }
+  .stats-bubble-section { padding: 80px 0; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .bubble-content h3 { font-size: 48px; }
+}
+
+
+/* 
+/* --- Base Container & Positioning --- */
+.certifications {
+  position: relative;
+  width: 100%;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+/* --- Full Cover Video Properties --- */
+.cert-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces video scaling without distortion gaps */
+  z-index: 1;
+}
+
+/* --- Text Shield Transparency Mask --- */
+.cert-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* Keeps headers readable over motion loops */
+  z-index: 2;
+}
+
+/* Push content stack above video panels */
+.certifications .container {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Section Title Formatting --- */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  color: #ffffff;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.section-title p {
+  color: #dddddd;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- Grid Structure Setup --- */
+.certification-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 column setup default */
+  gap: 30px;
+}
+
+/* --- Certification Card Designs --- */
+.cert-card {
+  background: rgba(255, 255, 255, 0.95); /* Slight opacity pop out */
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.cert-card img {
+  width: auto;
+  height: 80px;            /* Locks uniform height tracking for different brand sizes */
+  object-fit: contain;     /* Standardized proportional framing constraint */
+  margin-bottom: 20px;
+}
+
+.cert-card h3 {
+  color: #111111;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* --- Responsive Layout Controls --- */
+@media (max-width: 992px) {
+  .certification-grid {
+    grid-template-columns: repeat(2, 1fr); /* Drop to 2 columns on tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .certification-grid {
+    grid-template-columns: 1fr;            /* Linear single file column on mobile */
+  }
+  .section-title h2 { font-size: 28px; }
+}
+
+/*
+=======================================================
+Section 5: gallary section
+=======================================================
+*/
+#gallery {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Hides image overflow so it looks contained in the screen */
+  background-color: #111111; /* Fallback background */
+}
+
+/* Optional dark overlay if you plan to put titles over the gallery later */
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  pointer-events: none; /* Allows pointer clicks to pass through */
+}
+
+/* Container holding the grid columns */
+.gallery-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 column brick layout */
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Column structure layout */
+.gallery-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gallery-column img {
+  width: 100%;
+  height: 350px; /* Uniform heights create a beautiful clean brick format */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- ANIMATION CONTROLS --- */
+
+/* Columns animating UPWARD */
+.scroll-up {
+  animation: scrollUpLoop 25s linear infinite;
+}
+
+/* Alternative: making the middle column move DOWNWARD for visual dynamics */
+.scroll-down {
+  animation: scrollDownLoop 25s linear infinite;
+}
+
+
+
+/* Keyframe Logic: Translates exactly half of the total combined height (50%) */
+@keyframes scrollUpLoop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDownLoop {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive breakpoint handling for small mobile devices */
+@media (max-width: 768px) {
+  .gallery-wall {
+    grid-template-columns: repeat(2, 1fr); /* Changes to 2 columns on mobile screens */
+    gap: 12px;
+  }
+  .gallery-column img {
+    height: 220px;
+  }
+}
+
+/* 
+========================================================
+SECTION 5: Clients SECTION
+========================================================
+*/
+
+/*
+========================================================
+CLIENTS SECTION
+========================================================
+*/
+
+.clients {
+
+    position: relative;
+
+    padding: 120px 0;
+
+    overflow: hidden;
+
+    background-image: url("../assets/images/clients-bg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+
+/*
+========================================================
+BACKGROUND OVERLAY
+========================================================
+*/
+
+.clients-overlay {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    z-index: 1;
+}
+
+
+/*
+========================================================
+CONTENT ABOVE OVERLAY
+========================================================
+*/
+
+.clients .container {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/*
+========================================================
+TITLE STYLING
+========================================================
+*/
+
+.clients-title h2 {
+
+    color: white;
+}
+
+
+.clients-title p {
+
+    color: #dddddd;
+}
+
+
+/*
+========================================================
+LOGO SLIDER
+========================================================
+*/
+
+.logo-slider {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    margin-top: 60px;
+}
+
+
+/*
+========================================================
+TRACK HOLDING ALL LOGOS
+========================================================
+
+animation:
+Moves entire row continuously.
+
+========================================================
+*/
+
+.logo-track {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 80px;
+
+    width: max-content;
+
+    animation: moveRight 60s linear infinite;
+}
+
+
+/*
+========================================================
+LOGO IMAGE
+========================================================
+*/
+
+.logo-track img {
+
+    height: 90px;
+
+    width: auto;
+
+    object-fit: contain;
+
+    opacity: 0.95;
+
+    flex-shrink: 0;
+}
+
+
+/*
+========================================================
+LEFT TO RIGHT ANIMATION
+========================================================
+
+Starts left and slowly moves right.
+
+========================================================
+*/
+
+@keyframes moveRight {
+
+    from {
+
+        transform: translateX(-50%);
+    }
+
+    to {
+
+        transform: translateX(0%);
+    }
+}
+
+
+/*
+========================================================
+TABLET
+========================================================
+*/
+
+@media (max-width: 768px) {
+
+    .logo-track {
+
+        gap: 50px;
+    }
+
+    .logo-track img {
+
+        height: 65px;
+    }
+}
+
+
+/*
+========================================================
+MOBILE
+========================================================
+*/
+
+@media (max-width: 480px) {
+
+    .logo-track img {
+
+        height: 50px;
+    }
+}
+
+/* 
+========================================================
+SECTION 6: CONTACT US SECTION
+========================================================
+*/
+
+/*
+========================================================
+CONTACT SECTION
+========================================================
+*/
+
+.contact {
+
+    position: relative;
+
+    padding: 120px 0;
+
+    background-image: url("assets/contact.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+}
+
+
+/*
+========================================================
+DARK OVERLAY
+========================================================
+*/
+
+.contact::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.70);
+
+    z-index: 1;
+}
+
+
+/*
+========================================================
+CONTENT ABOVE OVERLAY
+========================================================
+*/
+
+.contact .container {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/*
+========================================================
+SECTION TITLE
+========================================================
+*/
+
+.contact .section-title {
+
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+.contact .section-title h2 {
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+.contact .section-title p {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    color: rgba(255,255,255,0.85);
+
+    line-height: 1.8;
+}
+
+
+/*
+========================================================
+CONTACT LAYOUT
+========================================================
+*/
+
+.contact-wrapper {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.2fr;
+
+    gap: 40px;
+
+    margin-bottom: 60px;
+}
+
+
+/*
+========================================================
+CONTACT INFO COLUMN
+========================================================
+*/
+
+.contact-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+
+/*
+========================================================
+GLASS CONTACT CARDS
+========================================================
+*/
+
+.contact-item {
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    transition: 0.3s ease;
+}
+
+
+/*
+========================================================
+CARD HOVER EFFECT
+========================================================
+*/
+
+.contact-item:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,0.12);
+}
+
+
+/*
+========================================================
+CARD TITLES
+========================================================
+*/
+
+.contact-item h3 {
+
+    color: #FFC107;
+
+    margin-bottom: 12px;
+
+    font-size: 22px;
+
+    font-weight: 600;
+}
+
+
+/*
+========================================================
+CARD TEXT
+========================================================
+*/
+
+.contact-item p {
+
+    color: #ffffff;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+
+/*
+========================================================
+CONTACT FORM CONTAINER
+========================================================
+*/
+
+.contact-form-container {
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 15px;
+
+    padding: 40px;
+}
+
+
+/*
+========================================================
+FORM LAYOUT
+========================================================
+*/
+
+.contact-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/*
+========================================================
+INPUTS & TEXTAREA
+========================================================
+*/
+
+.contact-form input,
+.contact-form textarea {
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(255,255,255,0.20);
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+
+/*
+========================================================
+PLACEHOLDER
+========================================================
+*/
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+
+    color: rgba(255,255,255,0.70);
+}
+
+
+/*
+========================================================
+INPUT FOCUS
+========================================================
+*/
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+
+    border-color: #FFC107;
+
+    background: rgba(255,255,255,0.12);
+}
+
+
+/*
+========================================================
+BUTTON
+========================================================
+*/
+
+.contact-form button {
+
+    border: none;
+
+    background: #FFC107;
+
+    color: #111111;
+
+    padding: 16px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+
+/*
+========================================================
+BUTTON HOVER
+========================================================
+*/
+
+.contact-form button:hover {
+
+    background: #FFD54F;
+
+    transform: translateY(-2px);
+}
+
+
+/*
+========================================================
+MAP GLASS BOX
+========================================================
+*/
+
+.map-container {
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+/*
+========================================================
+GOOGLE MAP
+========================================================
+*/
+
+.map-container iframe {
+
+    width: 100%;
+
+    height: 500px;
+
+    border: none;
+
+    border-radius: 12px;
+}
+
+
+/*
+========================================================
+RESPONSIVE DESIGN
+========================================================
+*/
+
+@media (max-width: 992px) {
+
+    .contact-wrapper {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .contact {
+
+        padding: 90px 0;
+    }
+
+    .contact .section-title h2 {
+
+        font-size: 34px;
+    }
+
+    .contact-form-container {
+
+        padding: 25px;
+    }
+
+    .contact-item {
+
+        padding: 25px;
+    }
+
+    .map-container iframe {
+
+        height: 350px;
+    }
+}
+
+/* 
+========================================================
+SECTION 6: FOOTER
+========================================================
+*/
+
+/* 
+========================================================
+MAIN FOOTER
+========================================================
+*/
+
+.footer {
+  background-color: #111111;
+
+  color: white;
+
+  padding-top: 80px;
+}
+
+/* 
+========================================================
+FOOTER TOP LAYOUT
+========================================================
+
+3-column responsive layout
+========================================================
+*/
+
+.footer-top {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 50px;
+
+  padding-bottom: 50px;
+}
+
+/* 
+========================================================
+FOOTER BRAND
+========================================================
+*/
+
+.footer-brand h2 {
+  font-size: 38px;
+
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  line-height: 1.9;
+
+  color: #cccccc;
+}
+
+/* 
+========================================================
+FOOTER HEADINGS
+========================================================
+*/
+
+.footer-links h3,
+.footer-contact h3 {
+  font-size: 24px;
+
+  margin-bottom: 25px;
+}
+
+/* 
+========================================================
+FOOTER LINKS
+========================================================
+*/
+
+.footer-links ul {
+  list-style: none;
+}
+
+/* Space between links */
+.footer-links ul li {
+  margin-bottom: 14px;
+}
+
+/* Footer link styling */
+.footer-links ul li a {
+  text-decoration: none;
+
+  color: #cccccc;
+
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.footer-links ul li a:hover {
+  color: white;
+}
+
+/* 
+========================================================
+FOOTER CONTACT INFO
+========================================================
+*/
+
+.footer-contact p {
+  color: #cccccc;
+
+  margin-bottom: 15px;
+
+  line-height: 1.8;
+}
+
+/* 
+========================================================
+FOOTER BOTTOM
+========================================================
+*/
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  padding: 25px 0;
+
+  text-align: center;
+}
+
+/* Copyright text */
+.footer-bottom p {
+  color: #aaaaaa;
+
+  font-size: 14px;
+}
+
+/* 
+========================================================
+SCROLL TO TOP BUTTON
+========================================================
+*/
+
+#scrollTopBtn {
+  position: fixed;
+
+  bottom: 30px;
+  right: 30px;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background-color: #b4b433;
+
+  color: white;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  display: none;
+
+  z-index: 999;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+#scrollTopBtn:hover {
+  background-color: #333333;
+
+  transform: translateY(-3px);
+}
+
+/* 
+========================================================
+RESPONSIVE DESIGN
+========================================================
+*/
+
+@media (max-width: 992px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 60px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .footer-brand h2 {
+    font-size: 32px;
+  }
+
+  #scrollTopBtn {
+    width: 45px;
+    height: 45px;
+
+    font-size: 20px;
+
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* 
+========================================================
+RESPONSIVE DESIGN
+========================================================
+*/
+
+@media (max-width: 992px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .section-title h2 {
+    font-size: 32px;
+  }
+
+  .about-text h3 {
+    font-size: 28px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 
+========================================================
+RESPONSIVE DESIGN
+========================================================
+
+For tablets and smaller devices.
+========================================================
+*/
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 38px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+}
