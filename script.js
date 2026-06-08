@@ -279,6 +279,83 @@ Keeping unnecessary JavaScript out of the project:
 
 ========================================================
 */
+/*
+========================================================
+Section 5: client section
+========================================================
+*/
+const canvas = document.getElementById('water-canvas');
+const ctx = canvas.getContext('2d');
+const section = document.getElementById('clients');
+
+let width = canvas.width = section.offsetWidth;
+let height = canvas.height = section.offsetHeight;
+
+window.addEventListener('resize', () => {
+    width = canvas.width = section.offsetWidth;
+    height = canvas.height = section.offsetHeight;
+});
+
+const ripples = [];
+
+class Ripple {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = 0;
+        this.maxRadius = Math.random() * 100 + 50;
+        this.opacity = 1;
+        this.speed = Math.random() * 2 + 1;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(0, 180, 216, ${this.opacity * 0.4})`; // হালকা নীলচে ওয়াটার টোন
+        ctx.lineWidth = 3;
+        ctx.stroke();
+    }
+    update() {
+        this.radius += this.speed;
+        this.opacity = 1 - (this.radius / this.maxRadius);
+    }
+}
+
+// মাউস মুভমেন্ট ট্র্যাক করা
+section.addEventListener('mousemove', (e) => {
+    const rect = section.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // খুব বেশি রিপল তৈরি হওয়া আটকাতে লিমিট
+    if (Math.random() > 0.85) {
+        ripples.push(new Ripple(x, y));
+    }
+});
+
+function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    for (let i = 0; i < ripples.length; i++) {
+        ripples[i].update();
+        ripples[i].draw();
+        
+        if (ripples[i].opacity <= 0) {
+            ripples.splice(i, 1);
+            i--;
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+
+
+
+
+
+
+
+
+
 
 /*
 ========================================================
